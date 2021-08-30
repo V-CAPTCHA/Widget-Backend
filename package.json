@@ -1,0 +1,27 @@
+{
+  "name": "human-verification-service-using-voice-recognition",
+  "version": "1.0.0",
+  "description": "Human Verification Service using Voice Recognition",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thanatath/Human-Verification-Service-using-Voice-Recognition.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thanatath/Human-Verification-Service-using-Voice-Recognition/issues"
+  },
+  "homepage": "https://github.com/thanatath/Human-Verification-Service-using-Voice-Recognition#readme",
+  "dependencies": {
+    "dateformat": "^4.5.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "mysql": "^2.18.1",
+    "nodejs": "0.0.0"
+  }
+}
