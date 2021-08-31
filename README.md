@@ -48,7 +48,7 @@ node index.js
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@thanatath](https://github.com/thanatath) - Idea & Initial work
+- [@thanatath](https://github.com/thanatath) 
 
 See also the list of [contributors](https://github.com/V-CAPTCHA/Widget-Backend/contributors) who participated in this project.
 
