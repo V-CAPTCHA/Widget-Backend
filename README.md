@@ -10,7 +10,6 @@
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![GitHub Issues](https://img.shields.io/github/issues/V-CAPTCHA/Widget-Backend.svg)](https://github.com/V-CAPTCHA/Widget-Backend/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/V-CAPTCHA/Widget-Backend.svg)](https://github.com/V-CAPTCHA/Widget-Backend/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
