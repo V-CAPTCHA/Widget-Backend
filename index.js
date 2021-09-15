@@ -6,6 +6,7 @@ const http = require('http');
 const express = require('express');
 const { clearScreenDown } = require('readline');
 const { send } = require('process');
+const { json } = require('express');
 const app = express();
 
 //Mysql Environment
@@ -34,6 +35,7 @@ app.get('/', (req, res) => {
   res.json(String('Human Verification Service using Voice Recognition '));
 });
 
+
 //get new captcha method
 app.get('/genNewCaptcha', async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -43,6 +45,7 @@ app.get('/genNewCaptcha', async (req, res) => {
   var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
   ip = ip.split(`:`).pop();
   var key = req.query.key
+  
   var domain = req.get('host');
 
 
@@ -51,8 +54,10 @@ app.get('/genNewCaptcha', async (req, res) => {
    var filterCheck = await checkFilterKey(domain,key) //pull check value from promise method
 
   if(filterCheck){ //if key & domain valid 
-    saveAction(id, ip,key)
-    res.json(result)
+   var genId = await saveAction(id, ip,key)
+    result[0].dataset_id = genId.insertId //set database id to Action id
+    result[0] = JSON.stringify(result[0]).replace("\"dataset_id\":", "\"action_id\":"); //Rename Key name 
+    res.json(JSON.parse(result[0]))
   }
   else{res.sendStatus(400)}
 
@@ -72,13 +77,17 @@ function genDBAction() { //GenAction in promise for pull data via variable
   });
 }
 
+
 function saveAction(id, ip,key) { //make Action in Table
+  return new Promise((resolve, reject) => {
   var sql =
     'INSERT INTO authen_action (dataset_id,action_ip,key_value) VALUES ("'+id+'","'+ip+'","'+key+'")'
-  con.query(sql, function (err, result) {
-    if (err) throw err;
+  con.query(sql,  (err, result) => {
     console.log('Action Saved id:'+id,' ip: ', ip,' Key: '+key);
-  });
+      return resolve(result);
+    }
+  );
+});
 }
 
 
