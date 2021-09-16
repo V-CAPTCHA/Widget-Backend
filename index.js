@@ -32,7 +32,7 @@ app.listen(process.env.Express_Port, () => {
 
 app.get('/', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.json(String('Human Verification Service using Voice Recognition '));
+  res.json(String('Human Verification Service using Voice Recognition'));
 });
 
 
