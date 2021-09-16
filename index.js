@@ -46,7 +46,7 @@ app.get('/genNewCaptcha', async (req, res) => {
   ip = ip.split(`:`).pop();
   var key = req.query.key
   
-  var domain = req.get('host');
+  var domain = req.query.domain
 
 
    ////filter variable setup
