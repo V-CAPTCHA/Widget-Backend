@@ -1,7 +1,7 @@
 require('dotenv').config();
 var mysql = require('mysql');
 var dateFormat = require('dateformat');
-
+const { Sequelize } = require('sequelize');
 const http = require('http');
 const express = require('express');
 const { clearScreenDown } = require('readline');
