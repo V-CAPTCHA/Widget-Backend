@@ -1,6 +1,6 @@
 FROM node:12.18.1
 ENV NODE_ENV=production
-EXPOSE 3000
+EXPOSE 5000
 WORKDIR /app
 
 COPY ["package.json", "package-lock.json*", "./"]

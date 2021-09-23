@@ -22,7 +22,9 @@
     "express": "^4.17.1",
     "http": "0.0.1-security",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.0",
     "nodejs": "0.0.0",
-    "sequelize": "^6.6.5"
+    "sequelize": "^6.6.5",
+    "sequelize-auto": "^0.8.4"
   }
 }
