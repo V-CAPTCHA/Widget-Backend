@@ -9,7 +9,7 @@ pipeline {
                 sh 'cp /var/lib/jenkins/workspace/env/Widget-Backend/.env ./.env'
             }
         }
-                        stage('Docker PreBuild Clear old image') {
+                stage('Docker PreBuild Clear old image') {
             steps {
                 
                 sh 'docker stop widget_api || true && docker rm widget_api || true'
@@ -21,10 +21,10 @@ pipeline {
                 sh 'docker build . -t widget_api'
             }
         }
-                        stage('Docker Deploy') {
+                stage('Docker Deploy') {
             steps {
                 
-                sh 'docker run -p 3000:3000/tcp --name widget_api -d widget_api'
+                sh 'docker run -p 3000:3000/tcp --restart=always --name widget_api -d widget_api'
             }
         }
     }
