@@ -34,7 +34,7 @@ pipeline {
                 stage('Docker Deploy') {
             steps {
                 
-                sh 'docker run -p 3000:3000/tcp --restart=always --name widget_api -d widget_api'
+                sh 'docker run -p 4000:3000/tcp --restart=always --name widget_api -d widget_api'
             }
         }
     }
