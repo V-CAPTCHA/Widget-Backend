@@ -9,6 +9,12 @@ pipeline {
                 sh 'cp /var/lib/jenkins/workspace/env/Widget-Backend/.env ./.env'
             }
         }
+        stage('SonarQube Analysis') {
+    def scannerHome = tool 'SonarScanner';
+    withSonarQubeEnv() {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
                 stage('Docker PreBuild Clear old image') {
             steps {
                 
