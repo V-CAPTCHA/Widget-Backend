@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { raw } = require('mysql');
 const { Sequelize } = require('sequelize');
 
 //initial sequelize connection
@@ -33,4 +34,4 @@ sequelize
 var initModels = require('./models/init-models');
 var models = initModels(sequelize);
 
-module.exports = db;
+module.exports = models;
