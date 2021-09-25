@@ -4,7 +4,7 @@ const models = require('../DB_Connection');
 
 //Router Path
 server.get('/', async (req, res) => {
-  //res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   //setup variable
   var domain = req.query.domain;
   var key = req.query.key;
