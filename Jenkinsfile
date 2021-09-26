@@ -10,11 +10,15 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-    def scannerHome = tool 'SonarScanner';
-    withSonarQubeEnv() {
-      sh "${scannerHome}/bin/sonar-scanner"
-    }
-  }
+            environment {
+            scannerHome = tool 'SonarLocal'
+        }
+            steps{
+               withSonarQubeEnv('SonarLocal') {
+                   sh "${scannerHome}/bin/sonar-scanner"
+}
+        }
+        }
                 stage('Docker PreBuild Clear old image') {
             steps {
                 
@@ -30,7 +34,7 @@ pipeline {
                 stage('Docker Deploy') {
             steps {
                 
-                sh 'docker run -p 3000:3000/tcp --restart=always --name widget_api -d widget_api'
+                sh 'docker run -p 4000:3000/tcp --restart=always --name widget_api -d widget_api'
             }
         }
     }
