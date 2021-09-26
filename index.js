@@ -2,13 +2,13 @@
 require('dotenv').config();
 const express = require('express');
 const server = express();
-
+server.disable("x-powered-by"); //Security Hotspots Fix
 //db Setup
 const db = require('./DB_Connection');
 
 //routes
 const GetCaptcha = require('./routes/GetCaptcha');
-
+const ValidCaptcha = require('./routes/ValidCaptcha');
 
 //start Express server
 server.listen(process.env.Express_Port, () => {
@@ -22,7 +22,7 @@ server.get('/', (req, res) => {
 
 //Express Router Use
 server.use('/GetCaptcha',GetCaptcha)
-
+server.use('/ValidCaptcha',ValidCaptcha)
 
 
 
