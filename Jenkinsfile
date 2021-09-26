@@ -41,7 +41,7 @@ pipeline {
                 stage('Discord Hook Notify') {
             steps {
                 
-                discordSend description: "Build & Deploy Widget_API",thumbnail:"https://avatars.githubusercontent.com/u/89780796?s=400&u=b179f6040d24c70e5e15560c17dd22c3ace8d688&v=4", link: env.BUILD_URL,footer: "Build Number "+env.BUILD_NUMBER, result: currentBuild.result, title: JOB_NAME, webhookURL: "https://discord.com/api/webhooks/891471982401560586/Bs8_1ecN3As1iOAX-TZwHAR-Xe5kmpCk1CqNTMw4RXHdOnard_Rr8212TaFcnL_w--6N"
+                discordSend description: "Build & Deploy Widget_API",thumbnail:"https://avatars.githubusercontent.com/u/89780796?s=400&u=b179f6040d24c70e5e15560c17dd22c3ace8d688&v=4", link: env.BUILD_URL,footer: "Build Number "+env.BUILD_NUMBER, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "https://discord.com/api/webhooks/891471982401560586/Bs8_1ecN3As1iOAX-TZwHAR-Xe5kmpCk1CqNTMw4RXHdOnard_Rr8212TaFcnL_w--6N"
 
             }
         }
