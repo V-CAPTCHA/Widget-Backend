@@ -23,6 +23,7 @@ pipeline {
             steps {
                 
                 sh 'docker stop widget_api || true && docker rm widget_api || true'
+                sh 'docker image rm widget_api || true'
             }
         }
                 stage('Docker Build') {
@@ -34,7 +35,7 @@ pipeline {
                 stage('Docker Deploy') {
             steps {
                 
-                sh 'docker run -p 4000:3000/tcp --restart=always --name widget_api -d widget_api'
+                sh 'docker run -p 4000:3000/tcp --restart=always -d --name widget_api widget_api:latest'
             }
         }
     }
