@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/thanatath/Human-Verification-Service-using-Voice-Recognition#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dateformat": "^4.5.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",

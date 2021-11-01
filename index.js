@@ -1,7 +1,9 @@
 //Structure
 require('dotenv').config();
 const express = require('express');
+var cors = require('cors')
 const server = express();
+server.use(cors()) //fix cors policy
 server.disable("x-powered-by"); //Security Hotspots Fix
 //db Setup
 const db = require('./DB_Connection');
