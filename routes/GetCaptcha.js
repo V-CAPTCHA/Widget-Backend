@@ -1,6 +1,7 @@
 const server = require('express').Router();
 const { Sequelize } = require('sequelize');
 const models = require('../DB_Connection');
+const authen_action = require('../models/authen_action');
 
 //Router Path
 server.get('/', async (req, res) => {
@@ -37,12 +38,21 @@ async function GetCaptchaProcess(domain, ip, key) {
   });
   //show log
   console.log('Action was create by Domain:', domain, ' Ip:', ip, ' Key:', key);
-  //create object for return
+    //pull time stamp from action
+  tStamp = await models.authen_action.findOne({
+    where: { action_id: ActionModel.action_id },
+  })
+  //create object for returnt
+
   var obAction = {
     action_id: ActionModel.action_id,
     dataset_img: dtID,
     dataset_question: captchabody.dataset_question,
+    action_timeStamp: tStamp.action_create
+    
   };
+  
+  
   return obAction;
 }
 
