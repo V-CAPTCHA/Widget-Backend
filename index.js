@@ -5,6 +5,7 @@ var cors = require('cors')
 const server = express();
 server.use(cors()) //fix cors policy
 server.disable("x-powered-by"); //Security Hotspots Fix
+server.set('trust proxy')
 //db Setup
 const db = require('./DB_Connection');
 

@@ -8,7 +8,7 @@ server.get('/', async (req, res) => {
   //setup variable
   var domain = req.query.domain;
   var key = req.query.key;
-  var ip = req.headers['X-Forwarded-For'];
+  var ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
   ip = ip.split(`:`).pop();
 
   if (await checkFiltered(domain, key)) {
