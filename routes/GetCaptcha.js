@@ -2,14 +2,13 @@ const server = require('express').Router();
 const { Sequelize } = require('sequelize');
 const models = require('../DB_Connection');
 const authen_action = require('../models/authen_action');
-var ipModule = require('ip');
+
 //Router Path
 server.get('/', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
   //setup variable
   var domain = req.query.domain;
   var key = req.query.key;
-  var ip = ipModule.address();
+  var ip = req.headers['X-Forwarded-For'];
   ip = ip.split(`:`).pop();
 
   if (await checkFiltered(domain, key)) {
