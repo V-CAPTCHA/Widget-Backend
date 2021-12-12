@@ -27,13 +27,13 @@ async function GetCaptchaProcess(domain, ip, key) {
     limit: 1,
     attributes: ['dataset_id', 'dataset_img', 'dataset_question'],
   });
-  var dtID = captchabody.dataset_id;
+  var dtIdImage = captchabody.dataset_img;
 
   //create model for Authen Action record
   var ActionModel = await models.authen_action.create({
     key_value: key,
     action_ip: ip,
-    dataset_id: dtID,
+    dataset_id: dtIdImage,
   });
   //show log
   console.log('Action was create by Domain:', domain, ' Ip:', ip, ' Key:', key);
@@ -45,7 +45,7 @@ async function GetCaptchaProcess(domain, ip, key) {
 
   var obAction = {
     action_id: ActionModel.action_id,
-    dataset_img: dtID,
+    dataset_img: dtIdImage,
     dataset_question: captchabody.dataset_question,
     action_timeStamp: tStamp.action_create
     
