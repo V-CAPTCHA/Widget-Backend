@@ -5,11 +5,10 @@ const authen_action = require('../models/authen_action');
 
 //Router Path
 server.get('/', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
   //setup variable
   var domain = req.query.domain;
   var key = req.query.key;
-  var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  var ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
   ip = ip.split(`:`).pop();
 
   if (await checkFiltered(domain, key)) {
@@ -46,7 +45,7 @@ async function GetCaptchaProcess(domain, ip, key) {
 
   var obAction = {
     action_id: ActionModel.action_id,
-    dataset_img: dtID,
+    dataset_img: captchabody.dataset_img,
     dataset_question: captchabody.dataset_question,
     action_timeStamp: tStamp.action_create
     
