@@ -28,8 +28,8 @@ const limiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 })
 
-server.use(limiter) //use limiter
-server.use(helmet()); //use helmet
+//server.use(limiter) //use limiter
+//server.use(helmet()); //use helmet
 
 server.get('/', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
