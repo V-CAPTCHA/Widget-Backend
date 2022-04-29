@@ -55,7 +55,25 @@ async function GetCaptchaProcess(domain, ip, key) {
   return obAction;
 }
 
+
 async function checkFiltered(domain, key) {
+
+  var check_deactive = await models.captcha_key.findOne({
+   
+      include: [{
+        model: models.user,
+        as: 'user',
+        required: true,
+       }],
+       where: { domain: domain, key_value: key }
+  });
+
+if (check_deactive.user.email.split('::')[1] == 'deactivate'){
+return false
+}
+
+   
+
   var filtered = await models.captcha_key.findOne({
     where: { domain: domain, key_value: key },
   });
